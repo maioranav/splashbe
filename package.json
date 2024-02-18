@@ -1,0 +1,19 @@
+{
+  "name": "splashbe",
+  "version": "1.0.0",
+  "description": "Backend for radiosplash.it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maioranav/splashbe.git"
+  },
+  "author": "Vincenzo Maiorana",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maioranav/splashbe/issues"
+  },
+  "homepage": "https://github.com/maioranav/splashbe#readme"
+}
