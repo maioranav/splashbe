@@ -1,19 +1,32 @@
 {
-  "name": "splashbe",
-  "version": "1.0.0",
-  "description": "Backend for radiosplash.it",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/maioranav/splashbe.git"
-  },
-  "author": "Vincenzo Maiorana",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/maioranav/splashbe/issues"
-  },
-  "homepage": "https://github.com/maioranav/splashbe#readme"
+   "name": "splashbe",
+   "version": "1.0.0",
+   "description": "Backend for radiosplash.it",
+   "main": "index.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "ts-node src/index.ts",
+      "typeorm": "typeorm-ts-node-commonjs"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/maioranav/splashbe.git"
+   },
+   "author": "Vincenzo Maiorana",
+   "license": "MIT",
+   "bugs": {
+      "url": "https://github.com/maioranav/splashbe/issues"
+   },
+   "homepage": "https://github.com/maioranav/splashbe#readme",
+   "dependencies": {
+      "@types/node": "^20.11.19",
+      "pg": "^8.11.3",
+      "reflect-metadata": "^0.1.13",
+      "typeorm": "0.3.20"
+   },
+   "devDependencies": {
+      "ts-node": "10.9.1",
+      "@types/node": "^16.11.10",
+      "typescript": "4.5.2"
+   }
 }
