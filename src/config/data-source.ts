@@ -1,11 +1,11 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Staff } from "../entity/Staff";
-import { SocialContacts } from "../entity/SocialContacts";
-import { Programma } from "../entity/Programma";
-import { Admin } from "../entity/Admin";
-import { PodcastSession } from "../entity/PodcastSession";
-import { Podcast } from "../entity/Podcast";
+import { Staff } from "../model/Staff";
+import { SocialContacts } from "../model/SocialContacts";
+import { Programma } from "../model/Programma";
+import { Admin } from "../model/Admin";
+import { PodcastSession } from "../model/PodcastSession";
+import { Podcast } from "../model/Podcast";
 
 require("dotenv").config();
 

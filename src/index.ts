@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import { AppDataSource } from "./config/data-source";
-import { Staff } from "./entity/Staff";
+import { Staff } from "./model/Staff";
 import { AutoLoad } from "./config/autoload";
 
 AppDataSource.initialize()

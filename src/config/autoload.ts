@@ -1,5 +1,5 @@
 import { AppDataSource } from "./data-source";
-import { Admin } from "../entity/Admin";
+import { Admin } from "../model/Admin";
 
 export const AutoLoad = () => {
   const mainAdmin = new Admin();
