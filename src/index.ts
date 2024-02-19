@@ -1,20 +1,23 @@
-import { AppDataSource } from "./data-source"
-import { User } from "./entity/User"
+import express, { Request, Response } from "express";
+import { AppDataSource } from "./config/data-source";
+import { Staff } from "./entity/Staff";
+import { AutoLoad } from "./config/autoload";
 
-AppDataSource.initialize().then(async () => {
+AppDataSource.initialize()
+  .then(() => {
+    console.log("Data Source has been initialized!");
+    AutoLoad();
+  })
+  .catch((err) => {
+    console.error("Error during Data Source initialization:", err);
+  });
 
-    console.log("Inserting a new user into the database...")
-    const user = new User()
-    user.firstName = "Timber"
-    user.lastName = "Saw"
-    user.age = 25
-    await AppDataSource.manager.save(user)
-    console.log("Saved a new user with id: " + user.id)
+const app = express();
+app.use(express.json());
 
-    console.log("Loading users from the database...")
-    const users = await AppDataSource.manager.find(User)
-    console.log("Loaded users: ", users)
+app.get("/staff", async function (req: Request, res: Response) {
+  const staff = await AppDataSource.getRepository(Staff).find();
+  res.json(staff);
+});
 
-    console.log("Here you can setup and run express / fastify / any other framework.")
-
-}).catch(error => console.log(error))
+app.listen(3000);
