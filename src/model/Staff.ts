@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany, TableInheritance } from "typeorm";
-import { Ruoli } from "../enum/ruoli.enum";
+import { Ruoli } from "./ruoli.enum";
 import { SocialContacts } from "./SocialContacts";
 import { Programma } from "./Programma";
 
