@@ -22,8 +22,8 @@ export class Staff {
       nullable: true
    })
    @JoinColumn()
-   social!: SocialContacts;
+   social?: SocialContacts;
 
    @OneToMany(() => Programma, (p: Programma) => p.artista, { onDelete: "CASCADE", nullable: true })
-   programmi!: Programma[];
+   programmi?: Programma[];
 }
