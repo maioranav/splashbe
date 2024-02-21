@@ -1,4 +1,5 @@
 import express, { Application } from "express";
+import cors from "cors";
 
 import { ApiConfig, Controller } from "../types/main.type";
 
@@ -15,6 +16,8 @@ export default class API {
    }
 
    private routes = (controllers: Controller[]) => {
+      this.app.use(cors());
+      this.app.use(express.json());
       controllers?.forEach((controller) => {
          this.app.use(controller.path, controller.router);
       });
