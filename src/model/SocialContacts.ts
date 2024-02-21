@@ -3,21 +3,21 @@ import { Staff } from "./Staff";
 
 @Entity()
 export class SocialContacts {
-  @PrimaryGeneratedColumn()
-  id!: number;
+   @PrimaryGeneratedColumn("uuid")
+   id!: string;
 
-  @OneToOne(() => Staff, (s: Staff) => s.social)
-  staff!: Staff;
+   @OneToOne(() => Staff, (s: Staff) => s.social)
+   staff!: Staff;
 
-  @Column({ nullable: true })
-  facebook!: string;
+   @Column({ nullable: true })
+   facebook!: string;
 
-  @Column({ nullable: true })
-  youtube!: string;
+   @Column({ nullable: true })
+   youtube!: string;
 
-  @Column({ nullable: true })
-  sitoweb!: string;
+   @Column({ nullable: true })
+   sitoweb!: string;
 
-  @Column({ nullable: true })
-  instagram!: string;
+   @Column({ nullable: true })
+   instagram!: string;
 }

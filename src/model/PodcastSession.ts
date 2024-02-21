@@ -3,7 +3,7 @@ import { Podcast } from "./Podcast";
 
 @Entity()
 export class PodcastSession {
-   @PrimaryGeneratedColumn()
+   @PrimaryGeneratedColumn("uuid")
    id!: string;
 
    @Column()

@@ -1,24 +1,32 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+   Column,
+   Entity,
+   JoinColumn,
+   ManyToOne,
+   OneToMany,
+   OneToOne,
+   PrimaryGeneratedColumn
+} from "typeorm";
 import { Staff } from "./Staff";
 import { Podcast } from "./Podcast";
 
 @Entity()
 export class Programma {
-  @PrimaryGeneratedColumn()
-  id!: number;
+   @PrimaryGeneratedColumn("uuid")
+   id!: string;
 
-  @Column()
-  titolo!: string;
+   @Column()
+   titolo!: string;
 
-  @Column()
-  img!: string;
+   @Column()
+   img!: string;
 
-  @ManyToOne(() => Staff)
-  artista!: Staff;
+   @ManyToOne(() => Staff)
+   artista!: Staff;
 
-  @OneToOne(() => Podcast, (p: Podcast) => p.programma, { onDelete: "CASCADE", nullable: true })
-  @JoinColumn()
-  podcast!: Podcast;
+   @OneToOne(() => Podcast, (p: Podcast) => p.programma, { onDelete: "CASCADE", nullable: true })
+   @JoinColumn()
+   podcast!: Podcast;
 
-  //appuntamenti
+   //appuntamenti
 }

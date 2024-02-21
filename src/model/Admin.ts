@@ -3,7 +3,7 @@ import { Staff } from "./Staff";
 
 @Entity()
 export class Admin {
-   @PrimaryGeneratedColumn()
+   @PrimaryGeneratedColumn("uuid")
    id!: string;
 
    @Column({ unique: true })

@@ -4,7 +4,7 @@ import { PodcastSession } from "./PodcastSession";
 
 @Entity()
 export class Podcast {
-   @PrimaryGeneratedColumn()
+   @PrimaryGeneratedColumn("uuid")
    id!: string;
 
    @OneToOne(() => Programma, (p: Programma) => p.podcast)

@@ -5,8 +5,8 @@ import { Programma } from "./Programma";
 
 @Entity()
 export class Staff {
-   @PrimaryGeneratedColumn()
-   id!: number;
+   @PrimaryGeneratedColumn("uuid")
+   id!: string;
 
    @Column()
    nome!: string;

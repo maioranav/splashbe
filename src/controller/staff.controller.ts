@@ -22,7 +22,7 @@ export default class StaffController implements Controller {
     */
    private getAllStaff = async (request: Request, response: Response) => {
       try {
-         response.status(200).json(await StaffService.getAllStaff());
+         response.status(200).json(await StaffService.getAll());
       } catch (err) {
          response.status(500).json({ error: err });
       }
