@@ -1,12 +1,4 @@
-import {
-   Entity,
-   PrimaryGeneratedColumn,
-   Column,
-   OneToOne,
-   JoinColumn,
-   OneToMany,
-   TableInheritance
-} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany } from "typeorm";
 import { Ruoli } from "./ruoli.enum";
 import { SocialContacts } from "./SocialContacts";
 import { Programma } from "./Programma";
