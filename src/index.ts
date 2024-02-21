@@ -1,7 +1,9 @@
-import express, { Request, Response } from "express";
 import { AppDataSource } from "./config/data-source.config";
-import { Staff } from "./model/Staff";
+import API from "./model/API";
 import { AutoLoad } from "./config/autoload.config";
+import { apiConfig } from "./config/app.config";
+
+const api = new API(apiConfig);
 
 AppDataSource.initialize()
    .then(() => {
@@ -12,12 +14,5 @@ AppDataSource.initialize()
       console.error("Error during Data Source initialization:", err);
    });
 
-const app = express();
-app.use(express.json());
-
-app.get("/staff", async function (req: Request, res: Response) {
-   const staff = await AppDataSource.getRepository(Staff).find();
-   res.json(staff);
-});
-
-app.listen(3000);
+//Run API server
+api.listen();

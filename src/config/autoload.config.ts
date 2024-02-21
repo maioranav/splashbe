@@ -4,7 +4,7 @@ import { Admin } from "../model/Admin";
 export const AutoLoad = () => {
    const mainAdmin = new Admin();
    mainAdmin.username = process.env.TYPEORM_ADMIN || "admin";
-   mainAdmin.password = process.env.TYPEORM_PASSWORD || "processpw";
+   mainAdmin.password = process.env.TYPEORM_PASSWORD || "password";
 
    try {
       AppDataSource.transaction(async (manager) => {
