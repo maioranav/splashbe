@@ -3,12 +3,12 @@ import { Staff } from "./Staff";
 
 @Entity()
 export class Admin {
-  @PrimaryGeneratedColumn()
-  id!: string;
+   @PrimaryGeneratedColumn()
+   id!: string;
 
-  @Column({ unique: true })
-  username!: string;
+   @Column({ unique: true })
+   username!: string;
 
-  @Column()
-  password!: string;
+   @Column()
+   password!: string;
 }

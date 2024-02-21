@@ -4,15 +4,15 @@ import { PodcastSession } from "./PodcastSession";
 
 @Entity()
 export class Podcast {
-  @PrimaryGeneratedColumn()
-  id!: string;
+   @PrimaryGeneratedColumn()
+   id!: string;
 
-  @OneToOne(() => Programma, (p: Programma) => p.podcast)
-  programma!: Programma;
+   @OneToOne(() => Programma, (p: Programma) => p.podcast)
+   programma!: Programma;
 
-  @Column()
-  img!: string;
+   @Column()
+   img!: string;
 
-  @OneToMany(() => PodcastSession, (p: PodcastSession) => p.podcast, { onDelete: "CASCADE" })
-  sessioni!: PodcastSession[];
+   @OneToMany(() => PodcastSession, (p: PodcastSession) => p.podcast, { onDelete: "CASCADE" })
+   sessioni!: PodcastSession[];
 }

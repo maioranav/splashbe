@@ -3,15 +3,15 @@ import { Podcast } from "./Podcast";
 
 @Entity()
 export class PodcastSession {
-  @PrimaryGeneratedColumn()
-  id!: string;
+   @PrimaryGeneratedColumn()
+   id!: string;
 
-  @Column()
-  num!: number;
+   @Column()
+   num!: number;
 
-  @Column()
-  url!: string;
+   @Column()
+   url!: string;
 
-  @ManyToOne(() => Podcast)
-  podcast!: Podcast;
+   @ManyToOne(() => Podcast)
+   podcast!: Podcast;
 }
