@@ -1,7 +1,6 @@
 import express, { Application } from "express";
-import cors from "cors";
 
-import { ApiConfig } from "../types/main.type";
+import { ApiConfig, Controller } from "../types/main.type";
 
 export default class API {
    private app: Application;
@@ -12,18 +11,10 @@ export default class API {
       this.app = express();
       this.port = appInit.port;
       this.name = appInit.name;
-      this.middlewares();
       this.routes(appInit.controllers);
    }
 
-   private middlewares = (middlewares?: any[]) => {
-      this.app.use(cors());
-      middlewares?.forEach((middleware) => {
-         this.app.use(middleware.mainMethod);
-      });
-   };
-
-   private routes = (controllers: any[]) => {
+   private routes = (controllers: Controller[]) => {
       controllers?.forEach((controller) => {
          this.app.use(controller.path, controller.router);
       });

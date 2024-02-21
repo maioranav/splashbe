@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import { Controller } from "../types/main.type";
+import StaffService from "../services/staff.service";
 
 export default class StaffController implements Controller {
    public path = "/staff";
@@ -20,6 +21,10 @@ export default class StaffController implements Controller {
     * @param {Response} response - Keep alive promise that streams events
     */
    private getAllStaff = async (request: Request, response: Response) => {
-      response.status(200).json({ method: "Not implemented yet!" });
+      try {
+         response.status(200).json(await StaffService.getAllStaff());
+      } catch (err) {
+         response.status(500).json({ error: err });
+      }
    };
 }
