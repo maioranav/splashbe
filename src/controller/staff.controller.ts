@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { Controller } from "../types/main.type";
 import StaffService from "../services/staff.service";
+import AuthMiddleware from "../middleware/auth.middleware";
 
 export default class StaffController implements Controller {
    public path = "/staff";
@@ -12,16 +13,16 @@ export default class StaffController implements Controller {
 
    private initRoutes() {
       this.router.get("/all", this.getAll);
-      this.router.get("/:id", this.findByID);
-      this.router.delete("/:id", this.deleteByID);
-      this.router.post("/", this.createOne);
+      this.router.get("/:id", AuthMiddleware.verifyToken, this.findByID);
+      this.router.delete("/:id", AuthMiddleware.verifyToken, this.deleteByID);
+      this.router.post("/", AuthMiddleware.verifyToken, this.createOne);
    }
 
    /**
     * Controller service for forwarding a list of all Staff.
     *
-    * @param {Request} request - Request from public controller API
-    * @param {Response} response - Keep alive promise that streams events
+    * @param {Request} request
+    * @param {Response} response
     */
    private getAll = async (request: Request, response: Response) => {
       try {
