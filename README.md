@@ -1,7 +1,6 @@
 # RadioSplash.it Backend Server
 
 This is a prototype of an ExpressJS Server to serve REST APIs for www.radiosplash.it (with Typescript support).
-The project is pre-configured to handle a GET request on the root path ("/") and respond with "Success!".
 
 ## Getting Started
 
