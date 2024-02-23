@@ -27,11 +27,3 @@ For development purposes, you can use the following command, which includes self
 ### npm run dev
 
 This command uses tools like nodemon and ts-node to enable automatic server restarts whenever changes are detected in the source code. It's perfect for a smooth development experience.
-
-## Build
-
-If you need to build the project for deployment, use the following command:
-
-### npm run build
-
-The build will be created in the ./build directory. You can then deploy the contents of this directory to your server.
