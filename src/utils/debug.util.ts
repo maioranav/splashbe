@@ -1,8 +1,6 @@
 import { format } from "date-fns";
 
 export const debug = (message: string, config?: DebugOption) => {
-   if (!process.env.DEBUG) return;
-
    const time = format(new Date(), "dd/MM/yy HH:mm:ss");
 
    switch (config?.status) {
@@ -10,12 +8,18 @@ export const debug = (message: string, config?: DebugOption) => {
          console.error("\x1b[31m" + time + " - ERROR - " + message, config.data, "\x1b[0m");
          return;
       case "warning":
+         if (!process.env.DEBUG) return;
+
          console.warn("\x1b[33m" + time + " - WARN - " + message, config.data, "\x1b[0m");
          return;
       case "success":
+         if (!process.env.DEBUG) return;
+
          console.warn("\x1b[32m" + time + " - " + message, config.data, "\x1b[0m");
          return;
       default:
+         if (!process.env.DEBUG) return;
+
          console.info("\x1b[34m" + time + " - INFO - " + message, config?.data, "\x1b[0m");
          return;
    }
