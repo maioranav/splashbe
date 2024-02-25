@@ -4,9 +4,9 @@ import AdminService from "../services/admin.service";
 
 export const AutoLoad = async () => {
    const mainAdmin = new Admin();
-   mainAdmin.username = process.env.TYPEORM_ADMIN || "admin";
+   mainAdmin.username = process.env.TYPEORM_ADMIN ?? "admin";
    mainAdmin.password = await AdminService.passwordEncrypt(
-      process.env.TYPEORM_PASSWORD || "password"
+      process.env.TYPEORM_PASSWORD ?? "password"
    );
 
    try {
