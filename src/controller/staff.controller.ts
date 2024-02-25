@@ -37,7 +37,7 @@ export default class StaffController implements Controller {
          const id = request.params["id"];
          response.status(200).json(await StaffService.findByID(id));
       } catch (error) {
-         response.status(500).json({ error });
+         response.status(400).json({ error });
       }
    };
 
@@ -46,7 +46,7 @@ export default class StaffController implements Controller {
          const id = request.params["id"];
          response.status(200).json(await StaffService.deleteByID(id));
       } catch (error) {
-         response.status(500).json({ error });
+         response.status(400).json({ error });
       }
    };
 
@@ -54,7 +54,7 @@ export default class StaffController implements Controller {
       try {
          response.status(200).json(await StaffService.create(request.body));
       } catch (error) {
-         response.status(500).json({ error });
+         response.status(400).json({ error });
       }
    };
 }

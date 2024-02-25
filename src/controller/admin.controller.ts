@@ -37,7 +37,7 @@ export default class AdminController implements Controller {
 
          response.status(200).json({ token: AdminService.generateToken(user.id) });
       } catch (error) {
-         response.status(403).json({ error});
+         response.status(403).json({ error });
       }
    };
 }
