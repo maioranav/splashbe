@@ -52,7 +52,6 @@ export default class StaffController implements Controller {
 
    private createOne = async (request: Request, response: Response) => {
       try {
-         console.log(request.body);
          response.status(200).json(await StaffService.create(request.body));
       } catch (error) {
          response.status(500).json({ error });
