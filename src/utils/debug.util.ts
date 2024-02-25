@@ -1,15 +1,22 @@
+import { format } from "date-fns";
+
 export const debug = (message: string, config?: DebugOption) => {
-   if (Boolean(process.env.DEBUG) != false) return;
+   if (!process.env.DEBUG) return;
+
+   const time = format(new Date(), "dd/MM/yy HH:mm:ss");
 
    switch (config?.status) {
       case "error":
-         console.error(message, config.data);
+         console.error("\x1b[31m" + time + " - ERROR - " + message, config.data, "\x1b[0m");
          return;
       case "warning":
-         console.warn(message, config.data);
+         console.warn("\x1b[33m" + time + " - WARN - " + message, config.data, "\x1b[0m");
+         return;
+      case "success":
+         console.warn("\x1b[32m" + time + " - " + message, config.data, "\x1b[0m");
          return;
       default:
-         console.info(message, config?.data);
+         console.info("\x1b[34m" + time + " - INFO - " + message, config?.data, "\x1b[0m");
          return;
    }
 };
@@ -20,6 +27,6 @@ export const jwtDecode = (token: string) => {
 };
 
 interface DebugOption {
-   status?: "error" | "warning";
+   status?: "error" | "warning" | "success";
    data?: Object;
 }
