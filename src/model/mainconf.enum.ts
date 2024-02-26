@@ -1,0 +1,5 @@
+export enum MainType {
+   TVURL = "TV STREAMING URL",
+   FMURL = "FM STREAMING URL",
+   FESECRET = "FRONTEND SECRET NONCE"
+}
