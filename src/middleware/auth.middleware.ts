@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import AdminService from "../services/admin.service";
+import { debug } from "../utils/debug.util";
 
 export default class AuthMiddleware {
    public static verifyToken = async (req: Request, res: Response, next: NextFunction) => {
@@ -15,6 +16,7 @@ export default class AuthMiddleware {
 
          next();
       } catch (error) {
+         debug("Authentication Error!", {data : "", status: "error"});
          res.status(401).json({ error });
       }
    };
