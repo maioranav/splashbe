@@ -7,6 +7,7 @@ import { Admin } from "../model/Admin";
 import { PodcastSession } from "../model/PodcastSession";
 import { Podcast } from "../model/Podcast";
 import { MainConf } from "../model/MainConf";
+import { Appuntamento } from "../model/Appuntamento";
 
 require("dotenv").config();
 
@@ -19,7 +20,16 @@ export const AppDataSource = new DataSource({
    database: process.env.TYPEORM_DBNAME ?? "splashbe",
    synchronize: true,
    logging: false,
-   entities: [Admin, MainConf, Podcast, PodcastSession, Programma, SocialContacts, Staff],
+   entities: [
+      Admin,
+      Appuntamento,
+      MainConf,
+      Podcast,
+      PodcastSession,
+      Programma,
+      SocialContacts,
+      Staff
+   ],
    migrations: [],
    subscribers: []
 });

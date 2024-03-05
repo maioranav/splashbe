@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Request, Router } from "express";
 
 export interface ApiConfig {
    name: string;
@@ -12,3 +12,7 @@ export interface Controller {
 }
 
 export interface Service {}
+
+export interface ImageUploadRequest extends Request {
+   newFileName?: string;
+}

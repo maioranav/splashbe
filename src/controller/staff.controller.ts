@@ -13,7 +13,7 @@ export default class StaffController implements Controller {
 
    private initRoutes() {
       this.router.get("/all", this.getAll);
-      this.router.get("/:id", AuthMiddleware.verifyToken, this.findByID);
+      this.router.get("/:id", this.findByID);
       this.router.delete("/:id", AuthMiddleware.verifyToken, this.deleteByID);
       this.router.post("/", AuthMiddleware.verifyToken, this.createOne);
    }

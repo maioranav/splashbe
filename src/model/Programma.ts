@@ -3,11 +3,13 @@ import {
    Entity,
    JoinColumn,
    ManyToOne,
+   OneToMany,
    OneToOne,
    PrimaryGeneratedColumn
 } from "typeorm";
 import { Staff } from "./Staff";
 import { Podcast } from "./Podcast";
+import { Appuntamento } from "./Appuntamento";
 
 @Entity()
 export class Programma {
@@ -27,5 +29,9 @@ export class Programma {
    @JoinColumn()
    podcast!: Podcast;
 
-   //appuntamenti
+   @OneToMany(() => Appuntamento, (a: Appuntamento) => a.programma, {
+      onDelete: "CASCADE",
+      nullable: true
+   })
+   appuntamenti!: Appuntamento[];
 }
