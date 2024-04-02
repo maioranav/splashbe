@@ -1,3 +1,4 @@
+import { validate } from "class-validator";
 import { AppDataSource } from "../config/data-source.config";
 import { Staff } from "../model/Staff";
 import { CreateStaff } from "../types/staff.type";
@@ -13,8 +14,11 @@ export default class StaffService {
       return staff;
    };
 
-   public static create = async ({ nome, ruolo }: CreateStaff) => {
-      const staff = AppDataSource.getRepository(Staff).create({ nome, ruolo });
+   public static create = async ({ nome, ruolo, img }: CreateStaff) => {
+      const staff = AppDataSource.getRepository(Staff).create({ nome, ruolo, img });
+      const validationErrors = await validate(staff);
+      if (validationErrors?.length > 0) throw new Error(validationErrors + "");
+
       return await AppDataSource.getRepository(Staff).save(staff);
    };
 
