@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { Controller } from "../types/main.type";
 import AuthMiddleware from "../middleware/auth.middleware";
 import ProgrammaService from "../services/programma.service";
+import NonceMiddleware from "../middleware/nonce.middleware";
 
 export default class ProgrammaController implements Controller {
    public path = "/programmi";
@@ -12,8 +13,8 @@ export default class ProgrammaController implements Controller {
    }
 
    private initRoutes() {
-      this.router.get("/all", this.getAll);
-      this.router.get("/:id", this.findByID);
+      this.router.get("/all", NonceMiddleware.verifyNonce, this.getAll);
+      this.router.get("/:id", NonceMiddleware.verifyNonce, this.findByID);
       this.router.delete("/:id", AuthMiddleware.verifyToken, this.deleteByID);
       this.router.post("/", AuthMiddleware.verifyToken, this.createOne);
    }

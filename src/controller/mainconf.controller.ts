@@ -3,6 +3,7 @@ import { Controller } from "../types/main.type";
 import AuthMiddleware from "../middleware/auth.middleware";
 import MainConfService from "../services/mainconf.service";
 import { MainType } from "../model/mainconf.enum";
+import NonceMiddleware from "../middleware/nonce.middleware";
 
 export default class MainConfController implements Controller {
    public path = "/main";
@@ -13,8 +14,8 @@ export default class MainConfController implements Controller {
    }
 
    private initRoutes() {
-      this.router.get("/all", this.getAll);
-      this.router.get("/id/:id", this.findByID);
+      this.router.get("/all", NonceMiddleware.verifyNonce, this.getAll);
+      //this.router.get("/id/:id", this.findByID); //Deprecated
       this.router.get("/title/:title", this.findByTitle);
       this.router.delete("/:id", AuthMiddleware.verifyToken, this.deleteByID);
       this.router.post("/", AuthMiddleware.verifyToken, this.createOne);
@@ -28,6 +29,7 @@ export default class MainConfController implements Controller {
       }
    };
 
+   // Deprecated
    private findByID = async (request: Request, response: Response) => {
       try {
          const id = request.params["id"];

@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { Controller } from "../types/main.type";
 import StaffService from "../services/staff.service";
 import AuthMiddleware from "../middleware/auth.middleware";
+import NonceMiddleware from "../middleware/nonce.middleware";
 
 export default class StaffController implements Controller {
    public path = "/staff";
@@ -12,8 +13,8 @@ export default class StaffController implements Controller {
    }
 
    private initRoutes() {
-      this.router.get("/all", this.getAll);
-      this.router.get("/:id", this.findByID);
+      this.router.get("/all", NonceMiddleware.verifyNonce, this.getAll);
+      this.router.get("/:id", NonceMiddleware.verifyNonce, this.findByID);
       this.router.delete("/:id", AuthMiddleware.verifyToken, this.deleteByID);
       this.router.post("/", AuthMiddleware.verifyToken, this.createOne);
    }

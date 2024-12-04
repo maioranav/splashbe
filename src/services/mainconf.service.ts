@@ -31,4 +31,12 @@ export default class MainConfService {
       if (!config) throw new Error("Config not found");
       return await AppDataSource.getRepository(MainConf).delete({ id });
    };
+
+   public static validateNonce = async (nonce: string) => {
+      const config = await AppDataSource.getRepository(MainConf).findOneBy({
+         title: MainType.FESECRET
+      });
+      if (!config) throw new Error("Frontend secret nonce not found");
+      return config.data === nonce;
+   };
 }
