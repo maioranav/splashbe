@@ -9,7 +9,7 @@ export class Appuntamento {
    @ManyToOne(() => Programma)
    programma!: Programma;
 
-   @Column({ unique: true })
+   @Column()
    giorno!: string;
 
    @Column()
