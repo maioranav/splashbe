@@ -4,8 +4,10 @@ import { AutoLoad } from "./config/autoload.config";
 import { apiConfig } from "./config/app.config";
 import { debug } from "./utils/debug.util";
 import ImageService from "./services/image.service";
+import Scheduler from "./model/Scheduler";
 
 const api = new API(apiConfig);
+const scheduler = new Scheduler();
 
 AppDataSource.initialize()
    .then(() => {
@@ -21,3 +23,4 @@ ImageService.checkFolder("./uploads");
 
 //Run API server
 api.listen();
+scheduler.scheduleTasks();

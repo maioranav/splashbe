@@ -1,8 +1,10 @@
+import { randomUUID } from "crypto";
 import { AppDataSource } from "../config/data-source.config";
 import { MainConf } from "../model/MainConf";
 import { MainType } from "../model/mainconf.enum";
 import { CreateMainConf } from "../types/mainconf.type";
 import { validate } from "class-validator";
+import { debug } from "../utils/debug.util";
 
 export default class MainConfService {
    public static getAll = async () => {
@@ -38,5 +40,15 @@ export default class MainConfService {
       });
       if (!config) throw new Error("Frontend secret nonce not found");
       return config.data === nonce;
+   };
+
+   public static updateNonce = async () => {
+      AppDataSource.transaction(async (manager) => {
+         const config = await manager.findOneBy(MainConf, { title: MainType.FESECRET });
+         if (!config) throw new Error("Frontend secret nonce not found");
+         config.data = randomUUID();
+         manager.save(config);
+         debug("Updated frontend secret", { status: "warning", data: config.data });
+      });
    };
 }
