@@ -4,6 +4,7 @@ import StaffController from "../controller/staff.controller";
 import AdminController from "../controller/admin.controller";
 import MainConfController from "../controller/mainconf.controller";
 import ImagesController from "../controller/images.controller";
+import ProgrammaController from "../controller/programma.controller";
 
 // Environment constraints
 dotenv.config();
@@ -15,6 +16,7 @@ export const apiConfig: ApiConfig = {
       new AdminController(),
       new MainConfController(),
       new StaffController(),
-      new ImagesController()
+      new ImagesController(),
+      new ProgrammaController()
    ]
 };

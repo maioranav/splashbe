@@ -21,7 +21,7 @@ export default class API {
       this.app.use(express.json());
       this.app.use(rateLimitMiddleware);
       controllers?.forEach((controller) => {
-         this.app.use(controller.path, controller.router);
+         this.app.use("/api" + controller.path, controller.router);
       });
    };
 

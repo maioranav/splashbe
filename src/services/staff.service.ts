@@ -10,7 +10,12 @@ export default class StaffService {
    };
 
    public static findByID = async (id: string) => {
-      const staff = await AppDataSource.getRepository(Staff).findOneBy({ id });
+      const staff = await AppDataSource.getRepository(Staff).findOne({
+         where: { id: id },
+         relations: {
+            programmi: true
+         }
+      });
       return staff;
    };
 
